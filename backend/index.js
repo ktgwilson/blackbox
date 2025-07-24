@@ -32,6 +32,8 @@ app.use('/api/search', require('./routes/search'));
 app.use('/api/enterprise', require('./routes/enterprise-features'));
 app.use('/api/mobile-crew', require('./routes/mobile-crew'));
 app.use('/api/white-label', require('./routes/white-label'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/crew', require('./routes/crew'));
 app.use('/api/control', require('./routes/control'));
 app.use('/api/field', require('./routes/field'));
 app.use('/api/jarvis', require('./routes/jarvis'));

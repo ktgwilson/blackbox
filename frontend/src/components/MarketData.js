@@ -126,6 +126,84 @@ const MarketData = ({ data }) => {
         </div>
       </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">📊 Material Availability</h3>
+          <div className="space-y-2 max-h-64 overflow-y-auto">
+            {[
+              { material: 'Steel Rebar', status: 'High' },
+              { material: 'Copper Wire', status: 'Medium' },
+              { material: 'PVC Pipe', status: 'High' },
+              { material: 'Lumber 2x4', status: 'Low' },
+              { material: 'Concrete Mix', status: 'High' },
+              { material: 'Electrical Conduit', status: 'Medium' },
+              { material: 'Insulation', status: 'High' },
+              { material: 'Drywall', status: 'Medium' },
+              { material: 'Paint', status: 'High' },
+              { material: 'Roofing Shingles', status: 'Low' }
+            ].map((item, index) => (
+              <div key={index} className="flex justify-between items-center py-1">
+                <span className="text-gray-700 text-sm truncate flex-1 mr-2">{item.material}</span>
+                <div className="flex items-center space-x-2 flex-shrink-0">
+                  <div className={`w-2 h-2 rounded-full ${
+                    item.status === 'High' ? 'bg-green-500' : 
+                    item.status === 'Medium' ? 'bg-yellow-500' : 'bg-red-500'
+                  }`}></div>
+                  <span className="text-xs font-medium min-w-[50px] text-right">{item.status}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">👷 Labor Shortage Scale</h3>
+          <div className="space-y-2 max-h-64 overflow-y-auto">
+            {[
+              { trade: 'Electricians', severity: 'High' },
+              { trade: 'Plumbers', severity: 'Medium' },
+              { trade: 'HVAC Techs', severity: 'High' },
+              { trade: 'Carpenters', severity: 'Low' },
+              { trade: 'Roofers', severity: 'High' },
+              { trade: 'Concrete Workers', severity: 'Medium' },
+              { trade: 'Painters', severity: 'Low' },
+              { trade: 'Glaziers', severity: 'High' },
+              { trade: 'Insulators', severity: 'Medium' },
+              { trade: 'Framers', severity: 'Low' }
+            ].map((item, index) => (
+              <div key={index} className="flex justify-between items-center py-1">
+                <span className="text-gray-700 text-sm truncate flex-1 mr-2">{item.trade}</span>
+                <div className="flex items-center space-x-2 flex-shrink-0">
+                  <div className={`w-2 h-2 rounded-full ${
+                    item.severity === 'Low' ? 'bg-green-500' : 
+                    item.severity === 'Medium' ? 'bg-yellow-500' : 'bg-red-500'
+                  }`}></div>
+                  <span className="text-xs font-medium min-w-[50px] text-right">{item.severity}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">⚡ Quick Actions</h3>
+          <div className="space-y-3">
+            <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+              📊 Generate Market Report
+            </button>
+            <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+              💰 Price Alert Setup
+            </button>
+            <button className="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+              📈 Trend Analysis
+            </button>
+            <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+              🔔 Labor Alerts
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className="card bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
         <h2 className="text-2xl font-bold text-blue-900 mb-4">🤖 AI Market Analysis</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

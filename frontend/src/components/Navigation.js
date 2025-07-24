@@ -15,8 +15,11 @@ const Navigation = ({ searchQuery, setSearchQuery }) => {
     { id: 'ffebox', name: 'FFEBox', icon: '🪑', color: 'bg-yellow-600' },
     { id: 'glazebox', name: 'GlazeBox', icon: '🪟', color: 'bg-sky-400' },
     { id: 'framebox', name: 'FrameBox', icon: '🔨', color: 'bg-orange-600' },
-    { id: 'signalbox', name: 'SignalBox', icon: '📡', color: 'bg-purple-500' },
-    { id: 'roofbox', name: 'RoofBox', icon: '🏠', color: 'bg-red-600' }
+    { id: 'insulationbox', name: 'InsulationBox', icon: '🧊', color: 'bg-blue-400' },
+    { id: 'concretebox', name: 'ConcreteBox', icon: '🏗️', color: 'bg-gray-600' },
+    { id: 'roofbox', name: 'RoofBox', icon: '🏠', color: 'bg-red-700' },
+    { id: 'paintbox', name: 'PaintBox', icon: '🎨', color: 'bg-pink-500' },
+    { id: 'carpentrybox', name: 'CarpentryBox', icon: '🔨', color: 'bg-amber-700' }
   ];
 
   return (
@@ -46,52 +49,52 @@ const Navigation = ({ searchQuery, setSearchQuery }) => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <Link to="/trades" className="btn-secondary flex items-center space-x-2">
-              <Zap className="w-5 h-5" />
-              <span>All Trades</span>
+          <div className="flex items-center space-x-1">
+            <Link to="/trades" className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
+              <Zap className="w-4 h-4" />
+              <span className="hidden md:inline">Trades</span>
             </Link>
-            <Link to="/market-data" className="btn-secondary flex items-center space-x-2">
-              <BarChart3 className="w-5 h-5" />
-              <span>Market Data</span>
+            <Link to="/market-data" className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
+              <BarChart3 className="w-4 h-4" />
+              <span className="hidden md:inline">Market</span>
             </Link>
-            <Link to="/hotel-finder" className="btn-secondary flex items-center space-x-2">
-              <Hotel className="w-5 h-5" />
-              <span>Hotels</span>
+            <Link to="/hotel-finder" className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
+              <Hotel className="w-4 h-4" />
+              <span className="hidden md:inline">Hotels</span>
             </Link>
-            <Link to="/mobile" className="btn-secondary flex items-center space-x-2">
-              <Smartphone className="w-5 h-5" />
-              <span>Mobile</span>
+            <Link to="/mobile" className="bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
+              <Smartphone className="w-4 h-4" />
+              <span className="hidden md:inline">Mobile</span>
             </Link>
-            <Link to="/field-data" className="btn-secondary flex items-center space-x-2">
-              <Clipboard className="w-5 h-5" />
-              <span>Field Data</span>
+            <Link to="/field-data" className="bg-teal-500 hover:bg-teal-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
+              <Clipboard className="w-4 h-4" />
+              <span className="hidden md:inline">Field</span>
             </Link>
-            <Link to="/boardroom" className="btn-secondary flex items-center space-x-2">
+            <Link to="/boardroom" className="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
               <span>🏢</span>
-              <span>BoardroomAI</span>
+              <span className="hidden md:inline">Board</span>
             </Link>
-            <Link to="/ai-thinking" className="btn-secondary flex items-center space-x-2">
+            <Link to="/ai-thinking" className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
               <span>🧠</span>
-              <span>AI Engine</span>
+              <span className="hidden md:inline">AI</span>
             </Link>
-            <Link to="/control-panel" className="btn-primary flex items-center space-x-2">
-              <Settings className="w-5 h-5" />
-              <span>Control Panel</span>
+            <Link to="/control-panel" className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-1">
+              <Settings className="w-4 h-4" />
+              <span className="hidden md:inline">Control</span>
             </Link>
           </div>
         </div>
 
-        <div className="pb-4">
-          <div className="flex flex-wrap gap-2">
+        <div className="pb-3">
+          <div className="flex flex-wrap gap-1.5 justify-center">
             {tradeTypes.map((trade) => (
               <Link
                 key={trade.id}
                 to={`/trade/${trade.id}`}
-                className={`${trade.color} text-white px-4 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center space-x-2`}
+                className={`${trade.color} text-white px-2.5 py-1 rounded-md font-medium text-xs hover:opacity-90 transition-all hover:scale-105 flex items-center space-x-1 shadow-sm`}
               >
-                <span className="text-lg">{trade.icon}</span>
-                <span>{trade.name}</span>
+                <span className="text-xs">{trade.icon}</span>
+                <span className="hidden sm:inline">{trade.name}</span>
               </Link>
             ))}
           </div>

@@ -29,7 +29,14 @@ const TradeVerticals = () => {
     { id: 'showbox', name: 'ShowBox', icon: '🎭', color: 'bg-fuchsia-600', description: 'Event Installations' },
     { id: 'poolbox', name: 'PoolBox', icon: '🏊', color: 'bg-blue-600', description: 'Pool Construction' },
     { id: 'securitybox', name: 'SecurityBox', icon: '🔒', color: 'bg-red-600', description: 'Security Systems' },
-    { id: 'ffebox', name: 'FFEBox', icon: '🪑', color: 'bg-yellow-600', description: 'Furniture, Fixtures & Equipment' }
+    { id: 'ffebox', name: 'FFEBox', icon: '🪑', color: 'bg-yellow-600', description: 'Furniture, Fixtures & Equipment' },
+    { id: 'insulationbox', name: 'InsulationBox', icon: '🧊', color: 'bg-blue-400', description: 'Insulation Installation' },
+    { id: 'framebox', name: 'FrameBox', icon: '🔨', color: 'bg-orange-600', description: 'Framing & Drywall' },
+    { id: 'glazebox', name: 'GlazeBox', icon: '🪟', color: 'bg-sky-400', description: 'Glazing & Windows' },
+    { id: 'concretebox', name: 'ConcreteBox', icon: '🏗️', color: 'bg-gray-600', description: 'Concrete Construction' },
+    { id: 'roofbox', name: 'RoofBox', icon: '🏠', color: 'bg-red-700', description: 'Roofing Systems' },
+    { id: 'paintbox', name: 'PaintBox', icon: '🎨', color: 'bg-pink-500', description: 'Interior Finishing' },
+    { id: 'carpentrybox', name: 'CarpentryBox', icon: '🔨', color: 'bg-amber-700', description: 'Carpentry & Millwork' }
   ];
 
   return (

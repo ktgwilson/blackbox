@@ -6,6 +6,16 @@ import BlackBoxAI from './BlackBoxAI';
 import PoolBox from './PoolBox';
 import SecurityBox from './SecurityBox';
 import FFEBox from './FFEBox';
+import InsulationBox from './InsulationBox';
+import FlowBox from './FlowBox';
+import FrameBox from './FrameBox';
+import GlazeBox from './GlazeBox';
+import AirBox from './AirBox';
+import VoltBox from './VoltBox';
+import ConcreteBox from './ConcreteBox';
+import RoofBox from './RoofBox';
+import PaintBox from './PaintBox';
+import CarpentryBox from './CarpentryBox';
 
 const tradeConfigs = {
     voltbox: {
@@ -70,6 +80,69 @@ const tradeConfigs = {
       defaultCrew: ['2 Installers', '1 Designer', '1 Project Manager'],
       defaultTools: ['Assembly tools', 'Measuring equipment', 'Lifting equipment', 'Installation hardware'],
       riskFactors: ['Heavy lifting', 'Precision assembly', 'Client coordination']
+    },
+    insulationbox: {
+      name: 'InsulationBox - Insulation Installation',
+      icon: '🧊',
+      color: 'bg-blue-400',
+      placeholder: 'Describe insulation scope: attic, walls, basement, crawl space...',
+      defaultCrew: ['2 Insulation Installers', '1 Supervisor'],
+      defaultTools: ['Insulation blower', 'Safety equipment', 'Measuring tools'],
+      riskFactors: ['Respiratory protection', 'Confined spaces', 'Fire safety']
+    },
+    framebox: {
+      name: 'FrameBox - Framing & Drywall',
+      icon: '🔨',
+      color: 'bg-orange-600',
+      placeholder: 'Describe framing scope: commercial build-out, residential addition...',
+      defaultCrew: ['3 Framers', '1 Lead Framer', '1 Helper'],
+      defaultTools: ['Framing nailers', 'Levels', 'Measuring equipment'],
+      riskFactors: ['Structural safety', 'Heavy equipment', 'Fall protection']
+    },
+    glazebox: {
+      name: 'GlazeBox - Glazing & Windows',
+      icon: '🪟',
+      color: 'bg-sky-400',
+      placeholder: 'Describe glazing scope: storefront, curtain wall, window replacement...',
+      defaultCrew: ['2 Glaziers', '1 Lead Glazier', '1 Helper'],
+      defaultTools: ['Glass handling equipment', 'Suction lifters', 'Glazing tools'],
+      riskFactors: ['Fall protection', 'Glass handling', 'Weather dependency']
+    },
+    concretebox: {
+      name: 'ConcreteBox - Concrete Construction',
+      icon: '🏗️',
+      color: 'bg-gray-600',
+      placeholder: 'Describe concrete scope: foundation, slab, driveway, decorative...',
+      defaultCrew: ['2 Concrete Finishers', '1 Laborer', '1 Foreman'],
+      defaultTools: ['Concrete tools', 'Finishing equipment', 'Forms'],
+      riskFactors: ['Heavy lifting', 'Weather dependency', 'Chemical safety']
+    },
+    roofbox: {
+      name: 'RoofBox - Roofing Systems',
+      icon: '🏠',
+      color: 'bg-red-600',
+      placeholder: 'Describe roofing scope: re-roof, repair, new construction...',
+      defaultCrew: ['3 Roofers', '1 Lead Roofer', '1 Safety Coordinator'],
+      defaultTools: ['Roofing nailers', 'Safety equipment', 'Tear-off tools'],
+      riskFactors: ['Fall protection', 'Weather dependency', 'Heavy materials']
+    },
+    paintbox: {
+      name: 'PaintBox - Interior Finishing',
+      icon: '🎨',
+      color: 'bg-pink-500',
+      placeholder: 'Describe painting scope: interior walls, exterior, trim work...',
+      defaultCrew: ['2 Painters', '1 Helper'],
+      defaultTools: ['Brushes', 'Rollers', 'Sprayers', 'Drop cloths'],
+      riskFactors: ['VOC exposure', 'Ladder safety', 'Surface preparation']
+    },
+    carpentrybox: {
+      name: 'CarpentryBox - Carpentry & Millwork',
+      icon: '🔨',
+      color: 'bg-amber-700',
+      placeholder: 'Describe carpentry scope: trim, cabinetry, millwork, custom furniture...',
+      defaultCrew: ['2 Carpenters', '1 Helper'],
+      defaultTools: ['Hand tools', 'Power tools', 'Measuring equipment'],
+      riskFactors: ['Sharp tools', 'Dust exposure', 'Precision work']
     }
   };
 
@@ -126,6 +199,36 @@ const TradeEstimator = ({ socket, aiLevel, marketData }) => {
   }
   if (tradeType === 'ffebox') {
     return <FFEBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'insulationbox') {
+    return <InsulationBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'flowbox') {
+    return <FlowBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'framebox') {
+    return <FrameBox visible={true} />;
+  }
+  if (tradeType === 'glazebox') {
+    return <GlazeBox visible={true} />;
+  }
+  if (tradeType === 'airbox') {
+    return <AirBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'voltbox') {
+    return <VoltBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'concretebox') {
+    return <ConcreteBox visible={true} />;
+  }
+  if (tradeType === 'roofbox') {
+    return <RoofBox visible={true} />;
+  }
+  if (tradeType === 'paintbox') {
+    return <PaintBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'carpentrybox') {
+    return <CarpentryBox visible={true} />;
   }
 
   return (

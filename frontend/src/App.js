@@ -15,8 +15,11 @@ import MobileApp from './components/MobileApp';
 import FieldDataCollector from './components/FieldDataCollector';
 import BoardroomAI from './components/BoardroomAI';
 import AIThinkingEngine from './components/AIThinkingEngine';
+import ShortcutPanel from './components/ShortcutPanel';
 
-function App() {
+function AppContent() {
+  useKeyboardShortcuts();
+  
   const [socket, setSocket] = useState(null);
   const [aiLevel, setAiLevel] = useState('medium');
   const [marketData, setMarketData] = useState({});
