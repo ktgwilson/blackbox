@@ -16,8 +16,9 @@ import FieldDataCollector from './components/FieldDataCollector';
 import BoardroomAI from './components/BoardroomAI';
 import AIThinkingEngine from './components/AIThinkingEngine';
 import ShortcutPanel from './components/ShortcutPanel';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 
-function AppContent() {
+function App() {
   useKeyboardShortcuts();
   
   const [socket, setSocket] = useState(null);
@@ -66,6 +67,7 @@ function AppContent() {
               <Route path="/boardroom" element={<BoardroomAI />} />
               <Route path="/ai-thinking" element={<AIThinkingEngine />} />
             </Routes>
+            <ShortcutPanel />
           </main>
         </div>
       </div>

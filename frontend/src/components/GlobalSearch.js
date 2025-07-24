@@ -137,14 +137,14 @@ const GlobalSearch = ({ query }) => {
         {!loading && query && query.length > 2 && filteredResults.length === 0 && (
           <div className="text-center py-8 text-gray-500">
             <Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
-            <p>No results found for "{query}"</p>
+            <p>No results found for &ldquo;{query}&rdquo;</p>
           </div>
         )}
 
         {!loading && filteredResults.length > 0 && (
           <div className="space-y-4">
             <p className="text-sm text-gray-600">
-              Found {filteredResults.length} result{filteredResults.length !== 1 ? 's' : ''} for "{query}"
+              Found {filteredResults.length} result{filteredResults.length !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;
             </p>
             {filteredResults.map((result) => (
               <div key={result.id} className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer">
