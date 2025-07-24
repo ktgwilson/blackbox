@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "lint": "echo 'Backend linting not configured'"
+    "lint": "eslint . --ext .js --ignore-pattern node_modules --max-warnings=0"
   },
   "dependencies": {
     "cors": "^2.8.5",

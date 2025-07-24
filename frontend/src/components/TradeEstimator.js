@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Calculator, Users, Wrench, Package, DollarSign, AlertTriangle, TrendingUp } from 'lucide-react';
+import BlackBoxAI from './BlackBoxAI';
+import PoolBox from './PoolBox';
+import SecurityBox from './SecurityBox';
+import FFEBox from './FFEBox';
 
 const tradeConfigs = {
     voltbox: {
@@ -39,6 +43,33 @@ const tradeConfigs = {
       defaultCrew: ['2 Floor Installers', '1 Helper', '1 Finisher'],
       defaultTools: ['Flooring nailer', 'Miter saw', 'Knee pads', 'Spacers', 'Tapping block'],
       riskFactors: ['Dust control', 'Adhesive fumes', 'Heavy lifting']
+    },
+    poolbox: {
+      name: 'PoolBox - Pool Construction',
+      icon: '🏊',
+      color: 'bg-blue-600',
+      placeholder: 'Describe pool construction scope: type, size, features, equipment...',
+      defaultCrew: ['2 Pool Technicians', '1 Equipment Specialist', '1 Supervisor'],
+      defaultTools: ['Pool excavation tools', 'Plumbing equipment', 'Electrical tools', 'Finishing tools'],
+      riskFactors: ['Water safety', 'Electrical hazards', 'Heavy equipment']
+    },
+    securitybox: {
+      name: 'SecurityBox - Security Systems',
+      icon: '🔒',
+      color: 'bg-red-600',
+      placeholder: 'Describe security system scope: cameras, alarms, access control...',
+      defaultCrew: ['2 Security Technicians', '1 Network Specialist', '1 Lead Tech'],
+      defaultTools: ['Network tools', 'Camera equipment', 'Access control devices', 'Testing equipment'],
+      riskFactors: ['Electrical work', 'Height access', 'Network security']
+    },
+    ffebox: {
+      name: 'FFEBox - Furniture, Fixtures & Equipment',
+      icon: '🪑',
+      color: 'bg-yellow-600',
+      placeholder: 'Describe FF&E scope: furniture, fixtures, equipment installation...',
+      defaultCrew: ['2 Installers', '1 Designer', '1 Project Manager'],
+      defaultTools: ['Assembly tools', 'Measuring equipment', 'Lifting equipment', 'Installation hardware'],
+      riskFactors: ['Heavy lifting', 'Precision assembly', 'Client coordination']
     }
   };
 
@@ -83,8 +114,24 @@ const TradeEstimator = ({ socket, aiLevel, marketData }) => {
     setLoading(false);
   };
 
+  const handleEstimateGenerated = (estimate) => {
+    setResult(estimate);
+  };
+
+  if (tradeType === 'poolbox') {
+    return <PoolBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'securitybox') {
+    return <SecurityBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+  if (tradeType === 'ffebox') {
+    return <FFEBox visible={true} onEstimateGenerated={handleEstimateGenerated} />;
+  }
+
   return (
     <div className="space-y-8">
+      <BlackBoxAI tradeType={tradeType} scope={scope} aiLevel={aiLevel} />
+      
       <div className="flex items-center space-x-4">
         <div className={`w-16 h-16 ${config.color} rounded-xl flex items-center justify-center text-3xl`}>
           {config.icon}
