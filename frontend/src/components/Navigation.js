@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Settings, BarChart3, Hotel, Zap } from 'lucide-react';
+import { Search, Settings, BarChart3, Hotel, Zap, Smartphone, Clipboard } from 'lucide-react';
 
 const Navigation = ({ searchQuery, setSearchQuery }) => {
   const location = useLocation();
@@ -59,6 +59,14 @@ const Navigation = ({ searchQuery, setSearchQuery }) => {
             <Link to="/hotel-finder" className="btn-secondary flex items-center space-x-2">
               <Hotel className="w-5 h-5" />
               <span>Hotels</span>
+            </Link>
+            <Link to="/mobile" className="btn-secondary flex items-center space-x-2">
+              <Smartphone className="w-5 h-5" />
+              <span>Mobile</span>
+            </Link>
+            <Link to="/field-data" className="btn-secondary flex items-center space-x-2">
+              <Clipboard className="w-5 h-5" />
+              <span>Field Data</span>
             </Link>
             <Link to="/control-panel" className="btn-primary flex items-center space-x-2">
               <Settings className="w-5 h-5" />

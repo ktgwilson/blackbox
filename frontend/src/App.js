@@ -9,8 +9,10 @@ import TradeVerticals from './components/TradeVerticals';
 import ControlPanel from './components/ControlPanel';
 import HotelFinder from './components/HotelFinder';
 import GlobalSearch from './components/GlobalSearch';
-import JarvisAI from './components/JarvisAI';
+import BlackBoxAI from './components/BlackBoxAI';
 import MarketData from './components/MarketData';
+import MobileApp from './components/MobileApp';
+import FieldDataCollector from './components/FieldDataCollector';
 
 function App() {
   const [socket, setSocket] = useState(null);
@@ -43,7 +45,7 @@ function App() {
         <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         
         <div className="flex">
-          <JarvisAI aiLevel={aiLevel} setAiLevel={setAiLevel} />
+          <BlackBoxAI aiLevel={aiLevel} setAiLevel={setAiLevel} />
           
           <main className="flex-1 p-6">
             <Routes>
@@ -54,6 +56,8 @@ function App() {
               <Route path="/hotel-finder" element={<HotelFinder socket={socket} />} />
               <Route path="/search" element={<GlobalSearch query={searchQuery} />} />
               <Route path="/market-data" element={<MarketData data={marketData} />} />
+              <Route path="/mobile" element={<MobileApp />} />
+              <Route path="/field-data" element={<FieldDataCollector />} />
             </Routes>
           </main>
         </div>

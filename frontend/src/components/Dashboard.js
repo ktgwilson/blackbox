@@ -26,7 +26,7 @@ const Dashboard = ({ marketData }) => {
         </div>
         <div className="flex items-center space-x-3 bg-gradient-to-r from-primary-500 to-purple-600 text-white px-6 py-3 rounded-lg">
           <Brain className="w-6 h-6" />
-          <span className="font-semibold">Jarvis AI Active</span>
+          <span className="font-semibold">BlackBox AI Active</span>
           <Zap className="w-5 h-5 animate-pulse" />
         </div>
       </div>

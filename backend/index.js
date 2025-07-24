@@ -30,6 +30,8 @@ app.use('/api/market', require('./routes/market'));
 app.use('/api/hotels', require('./routes/hotels'));
 app.use('/api/search', require('./routes/search'));
 app.use('/api/control', require('./routes/control'));
+app.use('/api/field', require('./routes/field'));
+app.use('/api/jarvis', require('./routes/jarvis'));
 
 let marketData = {
   laborRates: [

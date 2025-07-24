@@ -97,7 +97,7 @@ const TradeEstimator = ({ socket, aiLevel, marketData }) => {
 
       {aiInsights.length > 0 && (
         <div className="card bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
-          <h2 className="text-xl font-bold text-purple-900 mb-4">🤖 Jarvis AI Insights</h2>
+          <h2 className="text-xl font-bold text-purple-900 mb-4">🤖 BlackBox AI Insights</h2>
           <div className="space-y-2">
             {aiInsights.map((insight, index) => (
               <p key={index} className="text-purple-800">{insight}</p>
