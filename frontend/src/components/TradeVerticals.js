@@ -26,7 +26,10 @@ const TradeVerticals = () => {
     { id: 'forgebox', name: 'ForgeBox', icon: '⚙️', color: 'bg-stone-600', description: 'Industrial' },
     { id: 'shadebox', name: 'ShadeBox', icon: '🪟', color: 'bg-neutral-600', description: 'Window Treatments' },
     { id: 'bluebox', name: 'BlueBox', icon: '🏊', color: 'bg-blue-800', description: 'Pools/Outdoor' },
-    { id: 'showbox', name: 'ShowBox', icon: '🎭', color: 'bg-fuchsia-600', description: 'Event Installations' }
+    { id: 'showbox', name: 'ShowBox', icon: '🎭', color: 'bg-fuchsia-600', description: 'Event Installations' },
+    { id: 'poolbox', name: 'PoolBox', icon: '🏊', color: 'bg-blue-600', description: 'Pool Construction' },
+    { id: 'securitybox', name: 'SecurityBox', icon: '🔒', color: 'bg-red-600', description: 'Security Systems' },
+    { id: 'ffebox', name: 'FFEBox', icon: '🪑', color: 'bg-yellow-600', description: 'Furniture, Fixtures & Equipment' }
   ];
 
   return (

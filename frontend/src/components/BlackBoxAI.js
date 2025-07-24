@@ -326,7 +326,7 @@ const BlackBoxAI = ({ tradeType, scope, aiLevel = 'medium' }) => {
                 <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-6">
                   <h3 className="text-xl font-semibold text-gray-200 mb-4 flex items-center">
                     <Brain className="w-6 h-6 mr-2 text-purple-400" />
-                    AI Insights & Recommendations
+                    AI Insights &amp; Recommendations
                     <span className="ml-2 text-sm bg-purple-600 px-2 py-1 rounded">{aiLevel.toUpperCase()}</span>
                   </h3>
                   <div className="space-y-4">
@@ -388,7 +388,7 @@ const BlackBoxAI = ({ tradeType, scope, aiLevel = 'medium' }) => {
               <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-200 mb-4 flex items-center">
                   <BarChart3 className="w-6 h-6 mr-2 text-green-400" />
-                  Market Positioning & Competitive Analysis
+                  Market Positioning &amp; Competitive Analysis
                   <span className="ml-2 text-sm bg-green-600 px-2 py-1 rounded">LIVE DATA</span>
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

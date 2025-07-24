@@ -13,6 +13,8 @@ import BlackBoxAI from './components/BlackBoxAI';
 import MarketData from './components/MarketData';
 import MobileApp from './components/MobileApp';
 import FieldDataCollector from './components/FieldDataCollector';
+import BoardroomAI from './components/BoardroomAI';
+import AIThinkingEngine from './components/AIThinkingEngine';
 
 function App() {
   const [socket, setSocket] = useState(null);
@@ -58,6 +60,8 @@ function App() {
               <Route path="/market-data" element={<MarketData data={marketData} />} />
               <Route path="/mobile" element={<MobileApp />} />
               <Route path="/field-data" element={<FieldDataCollector />} />
+              <Route path="/boardroom" element={<BoardroomAI />} />
+              <Route path="/ai-thinking" element={<AIThinkingEngine />} />
             </Routes>
           </main>
         </div>

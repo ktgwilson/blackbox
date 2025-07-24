@@ -10,14 +10,13 @@ const Navigation = ({ searchQuery, setSearchQuery }) => {
     { id: 'airbox', name: 'AirBox', icon: '❄️', color: 'bg-blue-500' },
     { id: 'flowbox', name: 'FlowBox', icon: '🚰', color: 'bg-cyan-500' },
     { id: 'floorbox', name: 'FloorBox', icon: '🏗️', color: 'bg-amber-600' },
+    { id: 'poolbox', name: 'PoolBox', icon: '🏊', color: 'bg-blue-600' },
+    { id: 'securitybox', name: 'SecurityBox', icon: '🔒', color: 'bg-red-600' },
+    { id: 'ffebox', name: 'FFEBox', icon: '🪑', color: 'bg-yellow-600' },
     { id: 'glazebox', name: 'GlazeBox', icon: '🪟', color: 'bg-sky-400' },
     { id: 'framebox', name: 'FrameBox', icon: '🔨', color: 'bg-orange-600' },
     { id: 'signalbox', name: 'SignalBox', icon: '📡', color: 'bg-purple-500' },
-    { id: 'roofbox', name: 'RoofBox', icon: '🏠', color: 'bg-red-600' },
-    { id: 'colorbox', name: 'ColorBox', icon: '🎨', color: 'bg-pink-500' },
-    { id: 'greenbox', name: 'GreenBox', icon: '🌱', color: 'bg-green-500' },
-    { id: 'renobox', name: 'RenoBox', icon: '🔧', color: 'bg-gray-600' },
-    { id: 'dockbox', name: 'DockBox', icon: '⚓', color: 'bg-blue-700' }
+    { id: 'roofbox', name: 'RoofBox', icon: '🏠', color: 'bg-red-600' }
   ];
 
   return (
@@ -67,6 +66,14 @@ const Navigation = ({ searchQuery, setSearchQuery }) => {
             <Link to="/field-data" className="btn-secondary flex items-center space-x-2">
               <Clipboard className="w-5 h-5" />
               <span>Field Data</span>
+            </Link>
+            <Link to="/boardroom" className="btn-secondary flex items-center space-x-2">
+              <span>🏢</span>
+              <span>BoardroomAI</span>
+            </Link>
+            <Link to="/ai-thinking" className="btn-secondary flex items-center space-x-2">
+              <span>🧠</span>
+              <span>AI Engine</span>
             </Link>
             <Link to="/control-panel" className="btn-primary flex items-center space-x-2">
               <Settings className="w-5 h-5" />
