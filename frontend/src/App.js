@@ -18,7 +18,7 @@ import AIThinkingEngine from './components/AIThinkingEngine';
 import ShortcutPanel from './components/ShortcutPanel';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 
-function App() {
+function AppContent() {
   useKeyboardShortcuts();
   
   const [socket, setSocket] = useState(null);
@@ -46,31 +46,37 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-50">
-        <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+    <div className="min-h-screen bg-gray-50">
+      <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      
+      <div className="flex">
+        <BlackBoxAI aiLevel={aiLevel} setAiLevel={setAiLevel} />
         
-        <div className="flex">
-          <BlackBoxAI aiLevel={aiLevel} setAiLevel={setAiLevel} />
-          
-          <main className="flex-1 p-6">
-            <Routes>
-              <Route path="/" element={<Dashboard marketData={marketData} />} />
-              <Route path="/trades" element={<TradeVerticals />} />
-              <Route path="/trade/:tradeType" element={<TradeEstimator socket={socket} aiLevel={aiLevel} marketData={marketData} />} />
-              <Route path="/control-panel" element={<ControlPanel />} />
-              <Route path="/hotel-finder" element={<HotelFinder socket={socket} />} />
-              <Route path="/search" element={<GlobalSearch query={searchQuery} />} />
-              <Route path="/market-data" element={<MarketData data={marketData} />} />
-              <Route path="/mobile" element={<MobileApp />} />
-              <Route path="/field-data" element={<FieldDataCollector />} />
-              <Route path="/boardroom" element={<BoardroomAI />} />
-              <Route path="/ai-thinking" element={<AIThinkingEngine />} />
-            </Routes>
-            <ShortcutPanel />
-          </main>
-        </div>
+        <main className="flex-1 p-6">
+          <Routes>
+            <Route path="/" element={<Dashboard marketData={marketData} />} />
+            <Route path="/trades" element={<TradeVerticals />} />
+            <Route path="/trade/:tradeType" element={<TradeEstimator socket={socket} aiLevel={aiLevel} marketData={marketData} />} />
+            <Route path="/control-panel" element={<ControlPanel />} />
+            <Route path="/hotel-finder" element={<HotelFinder socket={socket} />} />
+            <Route path="/search" element={<GlobalSearch query={searchQuery} />} />
+            <Route path="/market-data" element={<MarketData data={marketData} />} />
+            <Route path="/mobile" element={<MobileApp />} />
+            <Route path="/field-data" element={<FieldDataCollector />} />
+            <Route path="/boardroom" element={<BoardroomAI />} />
+            <Route path="/ai-thinking" element={<AIThinkingEngine />} />
+          </Routes>
+          <ShortcutPanel />
+        </main>
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

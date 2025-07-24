@@ -189,44 +189,41 @@ const BlackBoxAI = ({ tradeType, scope, aiLevel = 'medium' }) => {
   const intelligenceData = getIntelligenceData();
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white z-50 overflow-auto">
-      <div className="min-h-screen p-6">
-        <div className="max-w-7xl mx-auto space-y-6">
-          <div className="bg-gradient-to-r from-purple-800 to-blue-800 rounded-lg p-6 border border-purple-500">
+    <div className="fixed right-4 top-20 bottom-4 w-96 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white z-40 overflow-auto rounded-lg shadow-2xl border border-purple-500">
+      <div className="h-full p-4">
+        <div className="space-y-4">
+          <div className="bg-gradient-to-r from-purple-800 to-blue-800 rounded-lg p-3 border border-purple-500">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold mb-2">🤖 BlackBox AI Intelligence Center</h1>
-                <div className="flex items-center space-x-4">
-                  <p className="text-purple-200">Intelligence Level: {aiLevel.toUpperCase()}</p>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-purple-300">Status:</span>
-                    {aiLevel === 'high' ? '🔴' : aiLevel === 'medium' ? '🟡' : '🟢'}
-                  </div>
-                  <p className="text-purple-200">Trade: {tradeType?.toUpperCase()}</p>
+                <h1 className="text-lg font-bold mb-1">🤖 BlackBox AI</h1>
+                <div className="flex items-center space-x-2 text-xs">
+                  <span className="text-purple-200">{aiLevel.toUpperCase()}</span>
+                  <span>{aiLevel === 'high' ? '🔴' : aiLevel === 'medium' ? '🟡' : '🟢'}</span>
+                  <span className="text-purple-200">{tradeType?.toUpperCase()}</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
                 <div className="text-right">
-                  <div className="text-4xl font-bold">{insights.length}</div>
-                  <div className="text-purple-200 text-sm">Active Insights</div>
+                  <div className="text-xl font-bold">{insights.length}</div>
+                  <div className="text-purple-200 text-xs">Insights</div>
                 </div>
                 <button 
                   onClick={() => setIsFullScreen(false)}
-                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  className="p-1 hover:bg-white/10 rounded transition-colors"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
           </div>
 
           {isAnalyzing && (
-            <div className="bg-blue-800/50 backdrop-blur border border-blue-400 rounded-lg p-6">
-              <div className="flex items-center space-x-4">
-                <Brain className="w-8 h-8 text-blue-400 animate-pulse" />
+            <div className="bg-blue-800/50 backdrop-blur border border-blue-400 rounded-lg p-3">
+              <div className="flex items-center space-x-2">
+                <Brain className="w-5 h-5 text-blue-400 animate-pulse" />
                 <div>
-                  <h3 className="text-xl font-semibold text-blue-200">AI Analysis in Progress</h3>
-                  <p className="text-blue-300">Processing project data, market conditions, and profit optimization...</p>
+                  <h3 className="text-sm font-semibold text-blue-200">AI Analysis in Progress</h3>
+                  <p className="text-xs text-blue-300">Processing data...</p>
                 </div>
               </div>
             </div>
@@ -234,38 +231,38 @@ const BlackBoxAI = ({ tradeType, scope, aiLevel = 'medium' }) => {
 
           {analysisComplete && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div className="bg-green-800/30 backdrop-blur border border-green-400 rounded-lg p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <DollarSign className="w-8 h-8 text-green-400" />
-                    <span className="text-2xl">{getStatusIcon(profitAnalysis.grossMargin, 25)}</span>
+              <div className="grid grid-cols-1 gap-3">
+                <div className="bg-green-800/30 backdrop-blur border border-green-400 rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <DollarSign className="w-5 h-5 text-green-400" />
+                    <span className="text-lg">{getStatusIcon(profitAnalysis.grossMargin, 25)}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-green-200 mb-2">Profit Analysis</h3>
-                  <div className="space-y-1 text-sm">
+                  <h3 className="text-sm font-semibold text-green-200 mb-2">Profit Analysis</h3>
+                  <div className="space-y-1 text-xs">
                     <div className="flex justify-between">
-                      <span className="text-green-300">Gross Margin:</span>
+                      <span className="text-green-300">Gross:</span>
                       <span className="font-bold text-green-200">{profitAnalysis.grossMargin}%</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-green-300">Net Margin:</span>
+                      <span className="text-green-300">Net:</span>
                       <span className="font-bold text-green-200">{profitAnalysis.netMargin}%</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-green-300">Optimal Price:</span>
+                      <span className="text-green-300">Price:</span>
                       <span className="font-bold text-green-200">${profitAnalysis.optimalPricing?.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-blue-800/30 backdrop-blur border border-blue-400 rounded-lg p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <TrendingUp className="w-8 h-8 text-blue-400" />
-                    <span className="text-2xl">{getStatusIcon(marketData.demandIndex, 70)}</span>
+                <div className="bg-blue-800/30 backdrop-blur border border-blue-400 rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <TrendingUp className="w-5 h-5 text-blue-400" />
+                    <span className="text-lg">{getStatusIcon(marketData.demandIndex, 70)}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-blue-200 mb-2">Market Intelligence</h3>
-                  <div className="space-y-1 text-sm">
+                  <h3 className="text-sm font-semibold text-blue-200 mb-2">Market Intelligence</h3>
+                  <div className="space-y-1 text-xs">
                     <div className="flex justify-between">
-                      <span className="text-blue-300">Labor Rate:</span>
+                      <span className="text-blue-300">Labor:</span>
                       <span className="font-bold text-blue-200">${marketData.laborRates?.current}/hr</span>
                     </div>
                     <div className="flex justify-between">
@@ -273,41 +270,41 @@ const BlackBoxAI = ({ tradeType, scope, aiLevel = 'medium' }) => {
                       <span className="font-bold text-blue-200">{marketData.laborRates?.change}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-blue-300">Demand Index:</span>
+                      <span className="text-blue-300">Demand:</span>
                       <span className="font-bold text-blue-200">{marketData.demandIndex}/100</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-yellow-800/30 backdrop-blur border border-yellow-400 rounded-lg p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <AlertTriangle className="w-8 h-8 text-yellow-400" />
-                    <span className="text-2xl">{riskAssessment.overall === 'low' ? '🟢' : riskAssessment.overall === 'medium' ? '🟡' : '🔴'}</span>
+                <div className="bg-yellow-800/30 backdrop-blur border border-yellow-400 rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <AlertTriangle className="w-5 h-5 text-yellow-400" />
+                    <span className="text-lg">{riskAssessment.overall === 'low' ? '🟢' : riskAssessment.overall === 'medium' ? '🟡' : '🔴'}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-yellow-200 mb-2">Risk Assessment</h3>
-                  <div className="space-y-1 text-sm">
+                  <h3 className="text-sm font-semibold text-yellow-200 mb-2">Risk Assessment</h3>
+                  <div className="space-y-1 text-xs">
                     <div className="flex justify-between">
-                      <span className="text-yellow-300">Overall Risk:</span>
+                      <span className="text-yellow-300">Overall:</span>
                       <span className="font-bold text-yellow-200 capitalize">{riskAssessment.overall}</span>
                     </div>
                     {riskAssessment.factors?.slice(0, 2).map((factor, idx) => (
                       <div key={idx} className="flex justify-between">
-                        <span className="text-yellow-300">{factor.name}:</span>
+                        <span className="text-yellow-300">{factor.name.split(' ')[0]}:</span>
                         <span className={`font-bold ${getRiskColor(factor.level)}`}>{factor.impact}%</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="bg-purple-800/30 backdrop-blur border border-purple-400 rounded-lg p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <Activity className="w-8 h-8 text-purple-400" />
-                    <span className="text-2xl">{aiLevel === 'high' ? '🔴' : aiLevel === 'medium' ? '🟡' : '🟢'}</span>
+                <div className="bg-purple-800/30 backdrop-blur border border-purple-400 rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <Activity className="w-5 h-5 text-purple-400" />
+                    <span className="text-lg">{aiLevel === 'high' ? '🔴' : aiLevel === 'medium' ? '🟡' : '🟢'}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-purple-200 mb-2">AI Performance</h3>
-                  <div className="space-y-1 text-sm">
+                  <h3 className="text-sm font-semibold text-purple-200 mb-2">AI Performance</h3>
+                  <div className="space-y-1 text-xs">
                     <div className="flex justify-between">
-                      <span className="text-purple-300">Data Points:</span>
+                      <span className="text-purple-300">Points:</span>
                       <span className="font-bold text-purple-200">{intelligenceData.dataPoints}</span>
                     </div>
                     <div className="flex justify-between">
@@ -322,144 +319,129 @@ const BlackBoxAI = ({ tradeType, scope, aiLevel = 'medium' }) => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-gray-200 mb-4 flex items-center">
-                    <Brain className="w-6 h-6 mr-2 text-purple-400" />
-                    AI Insights &amp; Recommendations
-                    <span className="ml-2 text-sm bg-purple-600 px-2 py-1 rounded">{aiLevel.toUpperCase()}</span>
+              <div className="space-y-3">
+                <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-3">
+                  <h3 className="text-sm font-semibold text-gray-200 mb-3 flex items-center">
+                    <Brain className="w-4 h-4 mr-1 text-purple-400" />
+                    AI Insights
+                    <span className="ml-1 text-xs bg-purple-600 px-1 py-0.5 rounded">{aiLevel.toUpperCase()}</span>
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-2">
                     {insights.map((insight, index) => (
-                      <div key={index} className={`border rounded-lg p-4 ${getImpactColor(insight.impact)} bg-opacity-20`}>
-                        <div className="flex items-start justify-between mb-2">
-                          <h4 className="font-semibold text-white">{insight.title}</h4>
-                          <div className="flex items-center space-x-2">
-                            <span className="text-xs font-medium text-white bg-black/30 px-2 py-1 rounded">{insight.confidence}%</span>
+                      <div key={index} className={`border rounded p-2 ${getImpactColor(insight.impact)} bg-opacity-20`}>
+                        <div className="flex items-start justify-between mb-1">
+                          <h4 className="text-xs font-semibold text-white">{insight.title}</h4>
+                          <div className="flex items-center space-x-1">
+                            <span className="text-xs font-medium text-white bg-black/30 px-1 py-0.5 rounded">{insight.confidence}%</span>
                             {insight.confidence > 90 ? (
-                              <CheckCircle className="w-4 h-4 text-green-400" />
+                              <CheckCircle className="w-3 h-3 text-green-400" />
                             ) : insight.confidence > 75 ? (
-                              <Target className="w-4 h-4 text-yellow-400" />
+                              <Target className="w-3 h-3 text-yellow-400" />
                             ) : (
-                              <AlertTriangle className="w-4 h-4 text-red-400" />
+                              <AlertTriangle className="w-3 h-3 text-red-400" />
                             )}
                           </div>
                         </div>
-                        <p className="text-sm text-gray-200">{insight.content}</p>
+                        <p className="text-xs text-gray-200">{insight.content}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-gray-200 mb-4 flex items-center">
-                    <PieChart className="w-6 h-6 mr-2 text-blue-400" />
-                    Detailed Risk Factors
-                    <span className="ml-2 text-sm bg-yellow-600 px-2 py-1 rounded">{riskAssessment.factors?.length} FACTORS</span>
+                <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-3">
+                  <h3 className="text-sm font-semibold text-gray-200 mb-3 flex items-center">
+                    <PieChart className="w-4 h-4 mr-1 text-blue-400" />
+                    Risk Factors
+                    <span className="ml-1 text-xs bg-yellow-600 px-1 py-0.5 rounded">{riskAssessment.factors?.length}</span>
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     {riskAssessment.factors?.map((factor, index) => (
-                      <div key={index} className="border border-gray-600 rounded-lg p-3">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="font-medium text-gray-200">{factor.name}</span>
-                          <div className="flex items-center space-x-2">
-                            <span className={`text-sm font-bold ${getRiskColor(factor.level)}`}>{factor.level.toUpperCase()}</span>
-                            <span className="text-sm text-gray-400">{factor.impact}% impact</span>
-                            <span className="text-lg">{factor.level === 'high' ? '🔴' : factor.level === 'medium' ? '🟡' : '🟢'}</span>
+                      <div key={index} className="border border-gray-600 rounded p-2">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xs font-medium text-gray-200">{factor.name.split(' ')[0]}</span>
+                          <div className="flex items-center space-x-1">
+                            <span className={`text-xs font-bold ${getRiskColor(factor.level)}`}>{factor.level.toUpperCase()}</span>
+                            <span className="text-xs text-gray-400">{factor.impact}%</span>
+                            <span className="text-sm">{factor.level === 'high' ? '🔴' : factor.level === 'medium' ? '🟡' : '🟢'}</span>
                           </div>
                         </div>
-                        <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div className="w-full bg-gray-700 rounded-full h-1">
                           <div 
-                            className={`h-2 rounded-full ${factor.level === 'high' ? 'bg-red-500' : factor.level === 'medium' ? 'bg-yellow-500' : 'bg-green-500'}`}
+                            className={`h-1 rounded-full ${factor.level === 'high' ? 'bg-red-500' : factor.level === 'medium' ? 'bg-yellow-500' : 'bg-green-500'}`}
                             style={{ width: `${factor.impact * 5}%` }}
                           ></div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-4 p-3 bg-blue-900/30 border border-blue-500 rounded-lg">
-                    <p className="text-sm text-blue-200">
-                      <strong>Mitigation Strategy:</strong> {riskAssessment.mitigation}
+                  <div className="mt-2 p-2 bg-blue-900/30 border border-blue-500 rounded">
+                    <p className="text-xs text-blue-200">
+                      <strong>Strategy:</strong> {riskAssessment.mitigation?.substring(0, 60)}...
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-200 mb-4 flex items-center">
-                  <BarChart3 className="w-6 h-6 mr-2 text-green-400" />
-                  Market Positioning &amp; Competitive Analysis
-                  <span className="ml-2 text-sm bg-green-600 px-2 py-1 rounded">LIVE DATA</span>
+              <div className="bg-gray-800/50 backdrop-blur border border-gray-400 rounded-lg p-3">
+                <h3 className="text-sm font-semibold text-gray-200 mb-3 flex items-center">
+                  <BarChart3 className="w-4 h-4 mr-1 text-green-400" />
+                  Market Analysis
+                  <span className="ml-1 text-xs bg-green-600 px-1 py-0.5 rounded">LIVE</span>
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-green-300 flex items-center">
-                      Pricing Strategy 
-                      <span className="ml-2 text-lg">🟢</span>
+                <div className="space-y-3">
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-semibold text-green-300 flex items-center">
+                      Pricing 🟢
                     </h4>
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-1 text-xs">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Current Market Rate:</span>
+                        <span className="text-gray-300">Market:</span>
                         <span className="text-green-400 font-bold">${marketData.laborRates?.regional}/hr</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Recommended Rate:</span>
+                        <span className="text-gray-300">Recommended:</span>
                         <span className="text-green-400 font-bold">${marketData.laborRates?.current}/hr</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Premium Potential:</span>
+                        <span className="text-gray-300">Premium:</span>
                         <span className="text-green-400 font-bold">+15%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-300">Profit Margin:</span>
-                        <span className="text-green-400 font-bold">{profitAnalysis.grossMargin}%</span>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-blue-300 flex items-center">
-                      Market Conditions 
-                      <span className="ml-2 text-lg">🟡</span>
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-semibold text-blue-300 flex items-center">
+                      Conditions 🟡
                     </h4>
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-1 text-xs">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Competition Level:</span>
+                        <span className="text-gray-300">Competition:</span>
                         <span className="text-blue-400 font-bold capitalize">{marketData.competitionLevel}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Seasonal Factor:</span>
+                        <span className="text-gray-300">Seasonal:</span>
                         <span className="text-blue-400 font-bold">{marketData.seasonalFactor}x</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Material Volatility:</span>
+                        <span className="text-gray-300">Volatility:</span>
                         <span className="text-blue-400 font-bold capitalize">{marketData.materialCosts?.volatility}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-300">Demand Trend:</span>
-                        <span className="text-blue-400 font-bold">{marketData.laborRates?.change}</span>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-purple-300 flex items-center">
-                      Strategic Position 
-                      <span className="ml-2 text-lg">🟢</span>
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-semibold text-purple-300 flex items-center">
+                      Position 🟢
                     </h4>
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-1 text-xs">
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Competitive Edge:</span>
+                        <span className="text-gray-300">Edge:</span>
                         <span className="text-purple-400 font-bold capitalize">{profitAnalysis.competitivePosition}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Risk-Adj. Margin:</span>
-                        <span className="text-purple-400 font-bold">{profitAnalysis.riskAdjustedMargin}%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-300">Win Probability:</span>
+                        <span className="text-gray-300">Win Rate:</span>
                         <span className="text-purple-400 font-bold">87%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Analysis Depth:</span>
+                        <span className="text-gray-300">Depth:</span>
                         <span className="text-purple-400 font-bold">{intelligenceData.analysisDepth}</span>
                       </div>
                     </div>
@@ -468,61 +450,48 @@ const BlackBoxAI = ({ tradeType, scope, aiLevel = 'medium' }) => {
               </div>
 
               {aiLevel === 'high' && (
-                <div className="bg-red-900/30 backdrop-blur border border-red-400 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-red-200 mb-4 flex items-center">
-                    <Zap className="w-6 h-6 mr-2 text-red-400" />
-                    Advanced Intelligence Features
-                    <span className="ml-2 text-sm bg-red-600 px-2 py-1 rounded">HIGH LEVEL ONLY</span>
+                <div className="bg-red-900/30 backdrop-blur border border-red-400 rounded-lg p-3">
+                  <h3 className="text-sm font-semibold text-red-200 mb-3 flex items-center">
+                    <Zap className="w-4 h-4 mr-1 text-red-400" />
+                    Advanced Features
+                    <span className="ml-1 text-xs bg-red-600 px-1 py-0.5 rounded">HIGH</span>
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div className="bg-red-800/20 border border-red-500 rounded-lg p-4">
-                      <h4 className="font-semibold text-red-300 mb-2">Predictive Analytics</h4>
-                      <div className="space-y-1 text-sm">
+                  <div className="grid grid-cols-1 gap-2">
+                    <div className="bg-red-800/20 border border-red-500 rounded p-2">
+                      <h4 className="text-xs font-semibold text-red-300 mb-1">Predictive Analytics</h4>
+                      <div className="space-y-1 text-xs">
                         <div className="flex justify-between">
-                          <span className="text-red-200">Future Demand:</span>
+                          <span className="text-red-200">Demand:</span>
                           <span className="text-red-100 font-bold">+23%</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-red-200">Price Forecast:</span>
+                          <span className="text-red-200">Forecast:</span>
                           <span className="text-red-100 font-bold">$52K</span>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-red-800/20 border border-red-500 rounded-lg p-4">
-                      <h4 className="font-semibold text-red-300 mb-2">Competitive Intelligence</h4>
-                      <div className="space-y-1 text-sm">
+                    <div className="bg-red-800/20 border border-red-500 rounded p-2">
+                      <h4 className="text-xs font-semibold text-red-300 mb-1">Competitive Intel</h4>
+                      <div className="space-y-1 text-xs">
                         <div className="flex justify-between">
-                          <span className="text-red-200">Market Share:</span>
+                          <span className="text-red-200">Share:</span>
                           <span className="text-red-100 font-bold">18.5%</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-red-200">Competitor Gap:</span>
+                          <span className="text-red-200">Gap:</span>
                           <span className="text-red-100 font-bold">+$8K</span>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-red-800/20 border border-red-500 rounded-lg p-4">
-                      <h4 className="font-semibold text-red-300 mb-2">Resource Optimization</h4>
-                      <div className="space-y-1 text-sm">
+                    <div className="bg-red-800/20 border border-red-500 rounded p-2">
+                      <h4 className="text-xs font-semibold text-red-300 mb-1">Optimization</h4>
+                      <div className="space-y-1 text-xs">
                         <div className="flex justify-between">
-                          <span className="text-red-200">Efficiency Gain:</span>
+                          <span className="text-red-200">Efficiency:</span>
                           <span className="text-red-100 font-bold">+15%</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-red-200">Cost Reduction:</span>
-                          <span className="text-red-100 font-bold">-$3.2K</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-red-800/20 border border-red-500 rounded-lg p-4">
-                      <h4 className="font-semibold text-red-300 mb-2">Strategic Recommendations</h4>
-                      <div className="space-y-1 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-red-200">Priority Actions:</span>
-                          <span className="text-red-100 font-bold">7</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-red-200">ROI Impact:</span>
+                          <span className="text-red-200">ROI:</span>
                           <span className="text-red-100 font-bold">+28%</span>
                         </div>
                       </div>
