@@ -1,2 +1,0 @@
-# blackbox
-ai estamator
